@@ -1,6 +1,6 @@
 using System;
 
-namespace CustomColorsAndSounds
+namespace Garage
 {
     public class Vehicle
     {

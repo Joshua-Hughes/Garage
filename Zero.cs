@@ -1,10 +1,17 @@
 using System;
+using System.Globalization;
 
-namespace CustomColorsAndSounds
+namespace Garage
 {
-    public class Zero : Vehicle
+    public class Zero : Vehicle, IBatteryPowered
     {
-        public double BatteryKWh { get; set; }
+        public double CurrentBatteryKWh { get; set; }
+
+
+        public void ChargeBattery()
+        {
+            this.CurrentBatteryKWh = 1.00;
+        }
 
         public override void Drive()
         {
@@ -19,6 +26,11 @@ namespace CustomColorsAndSounds
         public override void Stop()
         {
             Console.WriteLine("The bike came to a careful stop, as to not hurt the driver.");
+        }
+
+        public string CurrentChargePercentage()
+        {
+            return $"The {this.GetType().Name} currently has {this.CurrentBatteryKWh.ToString("P", CultureInfo.InvariantCulture)}";
         }
     }
 }

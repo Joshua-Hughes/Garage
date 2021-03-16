@@ -1,10 +1,16 @@
 using System;
+using System.Globalization;
 
-namespace CustomColorsAndSounds
+namespace Garage
 {
-    public class Ram : Vehicle
+    public class Ram : Vehicle, IGasPowered
     {
-        public double FuelCapacity { get; set; }
+        public double CurrentFuel { get; set; }
+
+        public void RefuelTank()
+        {
+            this.CurrentFuel = 1.00;
+        }
 
         public override void Drive()
         {
@@ -19,6 +25,11 @@ namespace CustomColorsAndSounds
         public override void Stop()
         {
             Console.WriteLine("The Ram finally came to a stop 10 minutes after hitting the brakes.");
+        }
+
+        public string CurrentTankPercentage()
+        {
+            return $"The {this.GetType().Name} currently has {this.CurrentFuel.ToString("P", CultureInfo.InvariantCulture)}";
         }
     }
 }
